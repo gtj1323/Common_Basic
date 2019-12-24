@@ -32,6 +32,8 @@ VS Code는 Extensions, setting.json파일 수정을 통해서 개발환경을 �
 - Prettier - Code formatter
   자동정렬 포멧을 지원.
 
+
+
 # 2. setting.json (커스텀 세팅)
 
 - 서체 적용 방법
@@ -43,10 +45,11 @@ VS Code는 Extensions, setting.json파일 수정을 통해서 개발환경을 �
   "[python]": {
       "editor.fontFamily": "Fira Code",
       "editor.fontLigatures": true,
-},
+}
   ```
   
-- 
+
+
 
 # 3. VS Code 단축키
 
