@@ -74,7 +74,7 @@ Git에 대해서 알아 봅시다.
    git 서버에서 관리되고 있는 상태를 기준으로 수정, 삭제를 관리한다고 보면됨.
    
    ```sequence
-Title:파일에 과정을 적용 시키면 변화하는 전, 후의 상태
+   Title:파일에 과정을 적용 시키면 변화하는 전, 후의 상태
    untracked->unmodified:add the file
    unmodified->modified:edit the file
    modified->staged:stage the file
@@ -174,7 +174,6 @@ Title:파일에 과정을 적용 시키면 변화하는 전, 후의 상태
 1. push하기
    commit을 한다고 바로 git파일에 적용되지는 않는다. 적용된 상태를 Git에서 볼 수 있도록 하기 위해서 Push라는 과정을 거쳐야 한다.
    `git push origin master`
-
 
 ### 2.3. Git 사용 - 로컬dir update. (pull)
 
