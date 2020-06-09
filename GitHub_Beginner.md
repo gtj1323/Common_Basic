@@ -169,7 +169,15 @@ Title:파일에 과정을 적용 시키면 변화하는 전, 후의 상태
    `git commit -a -m 'commit 메세지.'` Tracked 상태의 파일을 자동으로 Staging Area에 추가.
    StagingArea는 관리가 힘들어서 -a 옵션을 통해서 사용.
 
+### 2.4. Git에 드러나도록 만들기. (push)
+
+1. push하기
+   commit을 한다고 바로 git파일에 적용되지는 않는다. 적용된 상태를 Git에서 볼 수 있도록 하기 위해서 Push라는 과정을 거쳐야 한다.
+   `git push origin master`
+
+
 ### 2.3. Git 사용 - 로컬dir update. (pull)
+
 - `git pull`
 현재 사용중인 디렉토리를 최신화.
 A컴퓨터에서 clone한 후, B컴퓨터에서 commit, push한 다음에 A에서 최신버전을 사용할 경우 필요.
