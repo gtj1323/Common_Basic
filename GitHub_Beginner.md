@@ -24,22 +24,29 @@ Git에 대해서 알아 봅시다.
 1. **git의 구조.**
    working dir  ||  staging area  || git dir(repository)
    3개 층으로 구분.
-   ![Git_layer](https://user-images.githubusercontent.com/43361320/58688063-5daaa480-83be-11e9-8500-c1d940ab82fc.png)
-
-   - working dir : 현재 사용중인 컴퓨터에서 수정, 삭제, 추가 하는 파일.
    
-   - staging area :현재 사용중인 컴퓨터에서 commit할 파일이 저장된 영역.
+```sequence
+   working directory->staging area:stage files
+   staging area->git directtory(repository):commit
+   git directtory(repository)->working directory:checkout the project
+```
 
-   - git dir(repository 혹은 repo) : git서버에 저장되는 공간.
+![Git_layer](https://user-images.githubusercontent.com/43361320/58688063-5daaa480-83be-11e9-8500-c1d940ab82fc.png)
 
-   - working dir   =>   staging area
-
+- working dir : 현재 사용중인 컴퓨터에서 수정, 삭제, 추가 하는 파일.
+  
+- staging area :현재 사용중인 컴퓨터에서 commit할 파일이 저장된 영역.
+  
+- git dir(repository 혹은 repo) : git서버에 저장되는 공간.
+  
+- working dir   =>   staging area
+  
      > stage file 과정 (git add 명령을 통해서 수행.)
-
+   
    - staging area   =>  repo
-
+   
      > commit 과정 (git commit 명령을 통해서 수행.)
-
+   
    - working dir  <=  repo
    
      > checkout the project 과정.
@@ -65,28 +72,37 @@ Git에 대해서 알아 봅시다.
 3. **git의 파일 수정 상태**
    git은 파일의 상태를 4가지로 정의함. 아래의 과정은 working dir, staging area에서 이루어짐.
    git 서버에서 관리되고 있는 상태를 기준으로 수정, 삭제를 관리한다고 보면됨.
+   
+   ```sequence
+Title:파일에 과정을 적용 시키면 변화하는 전, 후의 상태
+   untracked->unmodified:add the file
+   unmodified->modified:edit the file
+   modified->staged:stage the file
+   unmodified->untracked:remove the file
+   staged->unmodified:commit
+   ```
    ![Git_modification_layer](https://user-images.githubusercontent.com/43361320/58688092-6e5b1a80-83be-11e9-8228-d03f54f924a4.png)
-
-   - Untracked
-
+   
+- Untracked
+  
      > git에서 관리하지 않는 상태의 파일.
-     > 최초 파일을 생성한 경우, Unmodified 상태에서 remove한 경우에 해당.
-
-   - Unmodified
-
+  > 최초 파일을 생성한 경우, Unmodified 상태에서 remove한 경우에 해당.
+  
+- Unmodified
+  
      > 저장소의 초기 수정을 하지 않은 상태.
      > `init`, `clone`, `commit` 한 상태
      > `init`, `clone`한 직 후는 Tracked 이면서 Unmodified인 상태.
-     > commit을 하면 해당 파일을 최신버전으로 보고, 수정되지 않은 상태로 봄.
-
-   - Modified
-
-     > Unmodified 상태의 파일 수정한 상태.
-
-   - Staged
-
+  > commit을 하면 해당 파일을 최신버전으로 보고, 수정되지 않은 상태로 봄.
+  
+- Modified
+  
+  > Unmodified 상태의 파일 수정한 상태.
+  
+- Staged
+  
      > Modified인 파일을 Stage(`git add`)한 경우.
-   
+
 
 ### 1.2. Git Setting
 - 명령어가 기억나지 않으면 `git help`를 사용하거나 검색을 해보도록 하자.
@@ -96,8 +112,8 @@ Git에 대해서 알아 봅시다.
 2. **사용자 설정**
    GitHub사용자의 경우, 메일주소는 반드시 GitHub계정과 동일 해야함.
    `--globl` 옵션을 사용시 1번만 하면 된다. 만약 빼면 프로젝트마다 다른 이름과 메일 사용.
-   `git config --global user.name "example"
-   git config --global user.email test@example.com`
+   `git config --global user.name "example"`
+   `git config --global user.email test@example.com`
    ※ 이름은 틀려도 큰 문제가 없지만 메일 주소가 틀리면 저장이 올바르게 되지 않음.
 3. **git 명령어 자동 색칠**
    `git config --global color.ui true`
