@@ -5,7 +5,7 @@
 Git에 대해서 알아 봅시다.
 
 - 미리 간단하게 알아야 할 내용. (아래에서 더 정확하게 설명해 드림.)
-  init : git 프로젝트 최초생성.
+  init : git 프로젝트 최초생성. `.git`이라는 폴더 생성. 이 폴더에 버전 정보가 저장됨.
   clone : git 프로젝트를 가져옴.
   add, commit, push는 git서버에 저장하기 위한 명령어.
 
@@ -31,11 +31,9 @@ Git에 대해서 알아 봅시다.
    git directtory(repository)->working directory:checkout the project
 ```
 
-![Git_layer](https://user-images.githubusercontent.com/43361320/58688063-5daaa480-83be-11e9-8500-c1d940ab82fc.png)
-
 - working dir : 현재 사용중인 컴퓨터에서 수정, 삭제, 추가 하는 파일.
   
-- staging area :현재 사용중인 컴퓨터에서 commit할 파일이 저장된 영역.
+- staging area :현재 사용중인 컴퓨터에서 commit할 파일이 저장된 영역. 컴퓨터 내에 존재.
   
 - git dir(repository 혹은 repo) : git서버에 저장되는 공간.
   
@@ -43,14 +41,13 @@ Git에 대해서 알아 봅시다.
   
      > stage file 과정 (git add 명령을 통해서 수행.)
    
-   - staging area   =>  repo
-   
-     > commit 과정 (git commit 명령을 통해서 수행.)
-   
-   - working dir  <=  repo
-   
-     > checkout the project 과정.
-   
+- staging area   =>  repo
+
+  > commit 과정 (git commit 명령을 통해서 수행.)
+
+- working dir  <=  repo
+
+  > checkout the project 과정.
 2. **git의 브랜치**
    1) git에서 말하는 branch는 하나의 프로젝트에서 분리된 하나의 버전.
    2) git을 사용 중 목적에 따라 격리한 상태로 수정, 삭제, 추가 등을 할 때 사용.
@@ -81,8 +78,6 @@ Git에 대해서 알아 봅시다.
    unmodified->untracked:remove the file
    staged->unmodified:commit
    ```
-   ![Git_modification_layer](https://user-images.githubusercontent.com/43361320/58688092-6e5b1a80-83be-11e9-8228-d03f54f924a4.png)
-   
 - Untracked
   
      > git에서 관리하지 않는 상태의 파일.
@@ -270,17 +265,27 @@ A컴퓨터에서 clone한 후, B컴퓨터에서 commit, push한 다음에 A에�
 
    - 작성 방법 (<https://www.gitignore.io/> 여기서 자동으로 만들 수 있지만 완벽하지 않다.)
 
-     ```
-     # a comment - 해당 줄의 '#'뒤는 무시함.
-     \*.a	   # 확장자가 .a인 파일 무시함.
-     \!lib.a	   # 윗 줄에서 확장자가 .a인 파일은 무시하게 했지만 lib.a는 무시하지 않음.
-     /TODO	   # 루트dir에 있는 TODO파일 무시, subdir/TODO처럼 dir하위에 있으면 무시하지 않음.
-     build/	   # build/ 디렉터리에 있는 파일은 무시하지 않음.
-     doc/*.txt  # 'doc/notes.txt' 같은 파일은 무시, doc/server/arch.txt는 무시하지 않음.
-     ```
-
-10. 내장 GUI 명령
+     | 작성법       | 뜻                                                           |
+     | ------------ | ------------------------------------------------------------ |
+     | \# a comment | "#" 뒤는 무시. a comment가 무시됨.                           |
+     | \\*.a        | .a 확장자를 가진 파일 무시.                                  |
+     | \\!lib.a     | .a 확장자를 무시하지만 lib.a는 무시하지 않음.                |
+     | /TODO        | 루트 dir에 있는 TODO파일 무시. subdir/TODO처럼 dir하위에 있으면 무시하지 않음. |
+     | build/       | build/ 디렉터리에 있는 파일은 무시하지 않음.                 |
+     | doc/*.txt    | 'doc/notes.txt' 같은 파일은 무시, doc/server/arch.txt는 무시하지 않음. |
+   
+9. 내장 GUI 명령
      `gitk`
+
+## 2.5. Git 사용 - 버전 돌아가기.
+
+과거의 버전을 가져오기 위해서는 reset, revert 두 가지가 있고, 두개는 차이가 있다.
+
+1. `git reset [커밋 버전] [옵션]`
+   [커밋 버전] 이 후의 정보를 모두 삭제하고 [커밋 버전]을 최신 버전으로 관리한다.
+   공유하는 버전의 경우는 절대 하면 안되는 명령어.
+2. `git revert [커밋 버전]`
+   [커밋 버전]을 취소하면서 새로운 버전을 생성함.
 
 
 
